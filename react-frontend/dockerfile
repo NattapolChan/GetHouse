@@ -1,0 +1,12 @@
+FROM node:latest
+RUN mkdir /app/
+RUN mkdir /app/src
+WORKDIR /app/src
+
+RUN pwd
+COPY . .
+RUN npm install
+
+EXPOSE 3000
+
+CMD "npm" "start"

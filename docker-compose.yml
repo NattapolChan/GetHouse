@@ -1,0 +1,20 @@
+version: '1'
+services:
+  api:
+    build:
+      context: ./go-backend
+      dockerfile: dockerfile
+    env_file:
+      - go-backend/.env
+    ports:
+      - "8080:8080"
+  frontend:
+    build:
+      context: ./react-frontend
+      dockerfile: dockerfile
+    env_file:
+      - react-frontend/.env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
